@@ -2,18 +2,21 @@
         const app =document.getElementById("app")
         const url="https://picsum.photos/id/"
         const size= "/200/200"
-        const Picture =parametros => {
-            const src= url+parametros+size
+        const picture = parametro => {
+            const src= url+parametro+size;
             return `
             <figure>
-                <img src="https://picsum.photos/id/${parametros}/200/200"  alt="" id="$(parametros)">
-        <figcaption >${parametros}</figcaption>
-         </figure>`
+                <img src="https://picsum.photos/id/${parametro}/200/200"  alt="" id="${parametro}" class="" >
+        <figcaption >${parametro}</figcaption>
+         </figure>
+         `
         }
-        console.log(Picture())
-        app.innerHTML=Picture(1)+Picture(2)+Picture(3)
 
-        const elemento = document.getElementById("1")
+       // console.log(Picture())
+
+        app.innerHTML=picture(1) + picture(2) + picture(3)
+
+       /* const elemento = document.getElementById("1")
         
         const elemento2 = document.getElementById("2")
         
@@ -21,9 +24,21 @@
 
         elemento.addEventListener("click",miFuncion)
         elemento2.addEventListener("click",miFuncion)
-        elemento3.addEventListener("click",miFuncion)
+        elemento3.addEventListener("click",miFuncion)*/
 
-        function miFuncion(){
+        const lista = document.querySelectorAll("img")
+        
+
+        for (let i = 0; i<lista.length;i++){
+           lista[i].addEventListener("mouseenter", miFuncion)
+        }
+
+        function miFuncion(parametro2){
+
             console.log("hayyy: ")
-            console.log(parametros)
+            console.log(parametro2.target)
+           var imagen =  parametro2.target
+           imagen.classList.toggle("redonda")
+
+            
         }
